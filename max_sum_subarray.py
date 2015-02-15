@@ -2,7 +2,7 @@
 # -*-coding:utf-8-*-
 
 '''
-    求连续数组最大和
+    求连续子数组最大和
 '''
 
 def solution_n3(array):
@@ -35,34 +35,26 @@ def solution_n2(array):
 def solution_n(array):
     if not array:
         return None
-    max_sum = max(array)
-    # 全是<=0，即求和永远不会增加
-    if max_sum <= 0:
-        return max_sum
-    max_sum = 0
+    max_sum = array[0]
     substitute_max_sum = 0
     for i in array:
-        local_sum = substitute_max_sum + i
-        if local_sum <= 0:
-            local_sum = 0
-        if local_sum > max_sum:
-            max_sum = local_sum
-        substitute_max_sum = local_sum
+        substitute_max_sum = substitute_max_sum + i
+        if substitute_max_sum > max_sum:
+            max_sum = substitute_max_sum
+        if substitute_max_sum <= 0:
+            substitute_max_sum = 0
     return max_sum
 
 
 def solution_nlogn(array):
     if not array:
         return None
-    max_sum = max(array)
-    if max_sum <= 0:
-        return max_sum
     return solution_nlogn_recursion(array, 0, len(array) - 1)
 
 def solution_nlogn_recursion(array, start, end):
-    if start == end:
+    if start == end:    
         return array[start]
-    if start + 1 == end:
+    if start + 1 == end: 
         return max(array[start], array[end], array[start] + array[end])
     mid = (start + end) / 2
     max_sum = max(max_sum_with_mid(array, start, end, mid), solution_nlogn_recursion(array, start, mid - 1), 
@@ -78,13 +70,12 @@ def max_sum_with_mid(array, start, end, mid):
     return max_left + max_right - array[mid]
 
 def max_sum_with_range(array, start, end, mid, range_array):
-    max_sum = 0
+    max_sum = array[range_array[0]]
     substitute_max_sum = 0
     for i in range_array:
-        tmp = substitute_max_sum + array[i]
-        if tmp > max_sum:
-            max_sum = tmp
-        substitute_max_sum = tmp
+        substitute_max_sum = substitute_max_sum + array[i]
+        if substitute_max_sum > max_sum:
+            max_sum = substitute_max_sum
     return max_sum
 
 
