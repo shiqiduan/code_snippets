@@ -52,9 +52,9 @@ def solution_nlogn(array):
     return solution_nlogn_recursion(array, 0, len(array) - 1)
 
 def solution_nlogn_recursion(array, start, end):
-    if start == end:    
+    if start == end:
         return array[start]
-    if start + 1 == end: 
+    if start + 1 == end:
         return max(array[start], array[end], array[start] + array[end])
     mid = (start + end) / 2
     max_sum = max(max_sum_with_mid(array, start, end, mid), solution_nlogn_recursion(array, start, mid - 1), 
@@ -65,18 +65,18 @@ def max_sum_with_mid(array, start, end, mid):
     '''
         solution_n 的方法与这里的计算只是多了一个条件来清空substitute_max_sum
     '''
+    def max_sum_with_range(array, start, end, mid, range_array):
+        max_sum = array[range_array[0]]
+        substitute_max_sum = 0
+        for i in range_array:
+            substitute_max_sum = substitute_max_sum + array[i]
+            if substitute_max_sum > max_sum:
+                max_sum = substitute_max_sum
+        return max_sum
+
     max_right = max_sum_with_range(array, start, end, mid, range(mid, end + 1))
     max_left = max_sum_with_range(array, start, end, mid, range(mid, start - 1, -1))
     return max_left + max_right - array[mid]
-
-def max_sum_with_range(array, start, end, mid, range_array):
-    max_sum = array[range_array[0]]
-    substitute_max_sum = 0
-    for i in range_array:
-        substitute_max_sum = substitute_max_sum + array[i]
-        if substitute_max_sum > max_sum:
-            max_sum = substitute_max_sum
-    return max_sum
 
 
 def test_scaffold(solution):
