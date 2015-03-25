@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Demo</title>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+</head>
+<body>
+    <div>
+        <div id="messagesDiv"></div>
+        <input type="text" id="nameInput" placeholder="Name">
+        <input type="text" id="messageInput" placeholder="Message">
+    </div>
+    <script type="text/javascript">
+    var myDateRef = new Firebase("https://qcahjs4rx93.firebaseio-demo.com/");
+    $("#messageInput").keyup(function(e) {
+        if (e.which == 13) {
+            var name = $("#nameInput").val();
+            var text = $("#messageInput").val();
+            // myDateRef.set("User " + name + " says " + text);
+            // myDateRef.set({name: name, text: text});
+            myDateRef.push({name: name, text: text});
+            $(this).val("");
+        }
+    });
+
+    myDateRef.on("child_added", function(snapshot) {
+        var message = snapshot.val();
+        displayChatMessage(message.name, message.text);
+    })
+
+    function displayChatMessage(name, text) {
+        $("<div/>").text(text).prepend($("<em/>").text(name + ": ")).appendTo($("#messagesDiv"));
+        console.log($("#messagesDiv")[0].scrollTop + "  " + $("#messagesDiv")[0].scrollHeight);
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+    }
+    </script>
+</body>
+</html>
