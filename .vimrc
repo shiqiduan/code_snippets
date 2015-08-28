@@ -1,4 +1,21 @@
 set nocompatible  "" not compatible with VI
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+"
+" " let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Bundle 'gmarik/vundle'
+Bundle 'andviro/flake8-vim'
+Bundle 'Valloric/YouCompleteMe'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 
 "" Encodings and fonts
 set encoding=utf-8
@@ -9,8 +26,12 @@ set langmenu=zh_CN.UTF-8
 language messages zh_CN.UTF-8
 set guifontset=wenquanyi,-*-16-*-*-*
 
+set nrformats=  "默认使用十进制
+
 "" Tab and Backspace
-set sw=2
+set sw=4
+set ts=4
+set expandtab
 set tabstop=4
 set shiftwidth=4 " 设定 << 和 >> 命令移动时的宽度为 4
 set softtabstop=4 " 使得按退格键时可以一次删掉 4 个空格
@@ -36,7 +57,6 @@ highlight Search term=reverse ctermbg=4 ctermfg=7
 
 "" Syntax and color scheme
 syntax enable
-filetype plugin indent on
 
 """""""""" 自动补全命令 """"""""""
 autocmd Filetype c      set omnifunc=ccomplete#Complete
@@ -60,3 +80,14 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
 """""""""""" END """"""""""""
+let g:PyFlakeOnWrite = 1
+let g:PyFlakeCheckers = 'pep8,mccabe,frosted'
+let g:PyFlakeDefaultComplexity=10
+let g:PyFlakeCWindow = 6 
+let g:PyFlakeSigns = 1 
+let g:PyFlakeSignStart = 1
+let g:PyFlakeMaxLineLength = 100
+let g:PyFlakeRangeCommand = 'Q'
+
+"autocmd CompleteDone * pclose
+"set mouse=a " :h mouse, 在全部的模式下激活鼠标
