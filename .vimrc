@@ -89,5 +89,7 @@ let g:PyFlakeSignStart = 1
 let g:PyFlakeMaxLineLength = 100
 let g:PyFlakeRangeCommand = 'Q'
 
-"autocmd CompleteDone * pclose
+autocmd CompleteDone * pclose
 "set mouse=a " :h mouse, 在全部的模式下激活鼠标
+
+set vb t_vb= "关闭错误声音和闪屏
