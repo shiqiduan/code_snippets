@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Bundle 'gmarik/vundle'
 Bundle 'andviro/flake8-vim'
-Bundle 'Valloric/YouCompleteMe'
+""Bundle 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -41,18 +41,19 @@ set autoindent
 set backspace=indent,eol,start  "" set backspace
 
 "" Display
-set number        "" show line number
+""set number        "" show line number, set nonu
 set ruler         "" always show current position
 set cursorline    "" highlight the current line
 set showcmd
 
-"" Searching
+" Searching
 set ignorecase smartcase " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
 set nowrapscan " 禁止在搜索到文件两端时重新搜索
 set incsearch " 输入搜索内容时就显示搜索结果
 set hlsearch " 搜索时高亮显示被找到的文本
 set showmatch
 set history=100
+set pastetoggle=<f5>
 highlight Search term=reverse ctermbg=4 ctermfg=7
 
 "" Syntax and color scheme
@@ -89,7 +90,7 @@ let g:PyFlakeSignStart = 1
 let g:PyFlakeMaxLineLength = 100
 let g:PyFlakeRangeCommand = 'Q'
 
-autocmd CompleteDone * pclose
+""autocmd CompleteDone * pclose
 "set mouse=a " :h mouse, 在全部的模式下激活鼠标
 
 set vb t_vb= "关闭错误声音和闪屏
