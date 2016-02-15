@@ -53,7 +53,7 @@ set incsearch " 输入搜索内容时就显示搜索结果
 set hlsearch " 搜索时高亮显示被找到的文本
 set showmatch
 set history=100
-set pastetoggle=<f5>
+set pastetoggle=<f5> "" 打开关闭从系统粘贴功能
 highlight Search term=reverse ctermbg=4 ctermfg=7
 
 "" Syntax and color scheme
