@@ -60,7 +60,7 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # export PATH="/Users/shiqiduan/opt/apache-maven-3.0.4/bin:$PATH"
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 export JAVA_OPTS="-Xms256m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=1024m"
-export MAVEN_OPTS="$JAVA_OPTS -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
+# export MAVEN_OPTS="$JAVA_OPTS -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 
@@ -90,10 +90,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias mysql_dev="mysql -h10.4.239.171 -uq3boy -palkf@xpdw -P3306"
-alias mysql_qa="mysql -h10.4.234.48 -uq3boy -palkf@xpdw -P3306"
-alias relay="ssh duanshiqi@relay.sankuai.com"
 alias readlink=greadlink
 
 compctl -g '~/.teamocil/*(:t:r)' teamocil
